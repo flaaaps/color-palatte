@@ -5,132 +5,17 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Color palettes</title>
+      <link rel="stylesheet" href="main.css">
    </head>
    <style>
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-
-      body {
-         width: 100%;
-         height: 100vh;
-         font-family: Rubik, sans-serif;
-      }
-
-      .wrapper {
-         display: grid;
-         width: 50%;
-         margin: 0 auto;
-         align-items: center;
-         height: 80vh;
-         grid-template-columns: repeat(3, 1fr);
-         grid-template-rows: 1fr 1fr;
-      }
-
-      .color {
-         background-color: black;
-         width: 150px;
-         height: 150px;
-         border: 2px solid #444444;
-         position: relative;
-      }
-
-      .tooltip {
-         visibility: hidden;
-         width: 120px;
-         background-color: #555;
-         color: #fff;
-         text-align: center;
-         padding: 5px 0;
-         border-radius: 6px;
-         /* Position the tooltip text */
-         position: absolute;
-         letter-spacing: 1px;
-         z-index: 1;
-         bottom: 50%;
-         left: 50%;
-         margin-left: -60px;
-         /* Fade in tooltip */
-         opacity: 0;
-         transition: opacity 0.3s;
-         cursor: pointer;
-      }
-
-      ::selection {
-         background-color: #555;
-      }
-      /* Tooltip arrow */
-
-      .tooltip::after {
-         content: "";
-         position: absolute;
-         top: 100%;
-         left: 50%;
-         margin-left: -5px;
-         border-width: 5px;
-         border-style: solid;
-         border-color: #555 transparent transparent transparent;
-      }
-
-      .color:hover .tooltip {
-         visibility: visible;
-         opacity: 1;
-         transition: opacity 0.3s;
-      }
-
-      .foreground {
-         background-color: #ffffff;
-      }
-
-      .background {
-         background-color: #fc5c65;
-      }
-
-      .primary-dark {
-         background-color: #eb3b5a;
-      }
-
-      .primary {
-         background-color: #fd9644;
-      }
-
-      .primary-light {
-         background-color: #f7b731;
-      }
-
-      input {
-         display: none;
-      }
    </style>
 
    <body>
-      <div class="wrapper">
-         <div class="color foreground">
-            <span class="tooltip" id="tooltip" onclick="CopyToClipboard('tooltip', 'value')">#ffffff</span>
-            <input id="value" type="text" value="#ffffff">
-         </div>
-         <div class="color background">
-            <span class="tooltip" id="tooltip1" onclick="CopyToClipboard('tooltip1', 'value1')">#fc5c65</span>
-            <input id="value1" type="text" value="#fc5c65">
-         </div>
-         <div class="color primary">
-            <span class="tooltip" id="tooltip2" onclick="CopyToClipboard('tooltip2', 'value2')">#fd9644</span>
-            <input id="value2" type="text" value="#fd9644">
-         </div>
-         <div class="color primary-dark">
-            <span class="tooltip" id="tooltip3" onclick="CopyToClipboard('tooltip3', 'value3')">#eb3b5a</span>
-            <input id="value3" type="text" value="#eb3b5a">
-         </div>
-         <div class="color primary-light">
-            <span class="tooltip" id="tooltip4" onclick="CopyToClipboard('tooltip4', 'value4')">#f7b731</span>
-            <input type="text" id="value4" value="#f7b731">
-         </div>
+      <input type="text" id="value-add" placeholder="Enter hex code">
+      <div class="wrapper" id="wrapper">
       </div>
-      <script src="app.js">
-
-      </script>
+      <script src="app.js"></script>
+      <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
    </body>
 
 </html>

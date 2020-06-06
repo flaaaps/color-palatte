@@ -1,18 +1,27 @@
-function CopyToClipboard(containerid, value) {
-    if (document.selection) {
-        let range = document.body.createTextRange();
-        range.moveToElementText(document.getElementById(containerid));
-        range.select().createTextRange();
-        document.execCommand("copy");
-    } else if (window.getSelection) {
-        let range = document.createRange();
-        range.selectNode(document.getElementById(containerid));
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-    }
+const str = "The best things in life are free";
+const patt = new RegExp("^free");
+const res = patt.exec(str);
 
-    document.getElementById(containerid).innerHTML = "Copied"
-    setTimeout(() => {
-        document.getElementById(containerid).innerHTML = document.getElementById(value).value
-    }, 2500);
-}
+console.log(res)
+
+const input = document.getElementById('value-add')
+
+input.addEventListener("keyup", function (e) {
+    if (e.keyCode === 13) {
+        const color = input.value
+        const wrapper = document.getElementById('wrapper')
+        if (/^#[0-9A-F]{6}$/i.test(color)) {
+            console.log()
+            wrapper.innerHTML += `<div style='background: ${color}' class=\"color\">
+                             <span class=\"tooltip\" id=\"tooltip4\">${color}</span>
+                             <input class=\"hidden-value\" type=\"text\" id=\"value4\" value=\"${color}\">
+                         </div>`
+        } else {
+            wrapper.innerHTML += `<div style="color: white; display: flex; justify-content: center; align-items: center"
+                              class=\"color not-valid\" id=\"t${i}\">
+                             <span style="text-align: center">Not a valid<br> hex code</span>
+                             <input class=\"hidden-value\" type=\"text\" value=\"not valid\">
+                         </div>`
+        }
+    }
+})
