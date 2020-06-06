@@ -118,3 +118,8 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+@media (max-width: 650px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+}
