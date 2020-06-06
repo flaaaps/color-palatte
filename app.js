@@ -10,7 +10,7 @@ input.addEventListener("keyup", function (e) {
     if (e.keyCode === 13) {
         const color = input.value
         const wrapper = document.getElementById('wrapper')
-        if (/^#[0-9A-F]{6}$/i.test(color)) {
+        if (/^#[0-9A-F]{3,6}$/i.test(color)) {
             console.log()
             wrapper.innerHTML += `<div style='background: ${color}' class=\"color\">
                              <span class=\"tooltip\" id=\"tooltip4\">${color}</span>
@@ -18,7 +18,7 @@ input.addEventListener("keyup", function (e) {
                          </div>`
         } else {
             wrapper.innerHTML += `<div style="color: white; display: flex; justify-content: center; align-items: center"
-                              class=\"color not-valid\" id=\"t${i}\">
+                              class=\"color not-valid\">
                              <span style="text-align: center">Not a valid<br> hex code</span>
                              <input class=\"hidden-value\" type=\"text\" value=\"not valid\">
                          </div>`
