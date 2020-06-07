@@ -18,10 +18,14 @@ input.addEventListener("keyup", function (e) {
                          </div>`
         } else {
             wrapper.innerHTML += `<div style="color: white; display: flex; justify-content: center; align-items: center"
-                              class=\"color not-valid\">
+                              class=\"color not-valid\" id="not-valid">
                              <span style="text-align: center">Not a valid<br> hex code</span>
                              <input class=\"hidden-value\" type=\"text\" value=\"not valid\">
                          </div>`
+            setTimeout(function () {
+                let element = document.getElementById("not-valid");
+                element.parentNode.removeChild(element);
+            }, 2000)
         }
     }
 })

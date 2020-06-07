@@ -89,26 +89,6 @@ body {
     transition: opacity 0.3s;
 }
 
-.foreground {
-    background-color: #ffffff;
-}
-
-.background {
-    background-color: #fc5c65;
-}
-
-.primary-dark {
-    background-color: #eb3b5a;
-}
-
-.primary {
-    background-color: #fd9644;
-}
-
-.primary-light {
-    background-color: #f7b731;
-}
-
 .hidden-value {
     display: none;
 }
