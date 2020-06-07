@@ -24,9 +24,11 @@ body {
     width: 75%;
     height: 30px;
     display: block;
-    padding-left: 10px;
+    padding: 20px;
     font-size: 22px;
     margin: 20px auto 0 auto;
+    border: 1px solid #444444;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
 }
 .add {
     font-size: 50px;
