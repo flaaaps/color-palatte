@@ -28,6 +28,9 @@ body {
     font-size: 22px;
     margin: 20px auto 0 auto;
     border: 1px solid #444444;
+    transition: .5s ease;
+}
+#value-add:focus {
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
 }
 .add {
@@ -59,7 +62,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 30px;
+    font-size: 27px;
 }
 .color .inner ion-icon {
     color: red;
