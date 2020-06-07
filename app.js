@@ -5,6 +5,7 @@ const res = patt.exec(str);
 console.log(res)
 
 const input = document.getElementById('value-add')
+input.value = ""
 
 input.addEventListener("keyup", function (e) {
     if (e.keyCode === 13) {
@@ -12,14 +13,19 @@ input.addEventListener("keyup", function (e) {
         const wrapper = document.getElementById('wrapper')
         if (/^#[0-9A-F]{3,6}$/i.test(color)) {
             console.log()
-            wrapper.innerHTML += `<div style='background: ${color}' class=\"color\">
-                             <span class=\"tooltip\" id=\"tooltip4\">${color}</span>
-                             <input class=\"hidden-value\" type=\"text\" id=\"value4\" value=\"${color}\">
+            wrapper.innerHTML += `
+                         <div style='background: ${color}' class=\"color\">
+                              <div class="inner">
+                                 <span class=\"tooltip\" id=\"tooltip4\">${color}</span>
+                                 <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
+                                 <input class=\"hidden-value\" type=\"text\" id=\"value4\" value=\"${color}\">
+                             </div>
                          </div>`
+
         } else {
             wrapper.innerHTML += `<div style="color: white; display: flex; justify-content: center; align-items: center"
                               class=\"color not-valid\" id="not-valid">
-                             <span style="text-align: center">Not a valid<br> hex code</span>
+                             <span style="text-align: center" oncanplay="removeItem(this)">Not a valid<br> hex code</span>
                              <input class=\"hidden-value\" type=\"text\" value=\"not valid\">
                          </div>`
             setTimeout(function () {
@@ -27,5 +33,13 @@ input.addEventListener("keyup", function (e) {
                 element.parentNode.removeChild(element);
             }, 2000)
         }
+        input.value = ""
     }
 })
+
+function removeItem(el) {
+    el.parentNode.parentElement.style.opacity = "0"
+    setTimeout(function () {
+        el.parentNode.parentElement.remove()
+    }, 301)
+}
