@@ -18,9 +18,9 @@ input.addEventListener("keyup", function (e) {
             wrapper.innerHTML += `
                          <div style='background: ${color}' class=\"color\">
                               <div class="inner">
-                                 <span class=\"tooltip\" id=\"tooltip4\">${color}</span>
+                                 <span class=\"tooltip\">${color}</span>
                                  <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
-                                 <input class=\"hidden-value\" type=\"text\" id=\"value4\" value=\"${color}\">
+                                 <input class=\"hidden-value\" type=\"text\" value=\"${color}\">
                              </div>
                          </div>`
         // Add # to the code
@@ -30,7 +30,7 @@ input.addEventListener("keyup", function (e) {
                               <div class="inner">
                                  <span class=\"tooltip\" id=\"tooltip4\">#${color}</span>
                                  <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
-                                 <input class=\"hidden-value\" type=\"text\" id=\"value4\" value=\"#${color}\">
+                                 <input class=\"hidden-value\" type=\"text\" value=\"#${color}\">
                              </div>
                          </div>`
         } else if(color !== "") {
