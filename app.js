@@ -23,7 +23,16 @@ input.addEventListener("keyup", function (e) {
                                  <input class=\"hidden-value\" type=\"text\" id=\"value4\" value=\"${color}\">
                              </div>
                          </div>`
-
+        // Add # to the code
+        } else if(/^(?!#)(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/i.test(color)) {
+            wrapper.innerHTML += `
+                         <div style='background: #${color}' class=\"color\">
+                              <div class="inner">
+                                 <span class=\"tooltip\" id=\"tooltip4\">#${color}</span>
+                                 <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
+                                 <input class=\"hidden-value\" type=\"text\" id=\"value4\" value=\"#${color}\">
+                             </div>
+                         </div>`
         } else if(color !== "") {
             // Add not valid item
             wrapper.innerHTML += `<div style="color: white; display: flex; justify-content: center; align-items: center"
@@ -36,6 +45,7 @@ input.addEventListener("keyup", function (e) {
                 let element = document.getElementById("not-valid");
                 element.parentNode.removeChild(element);
             }, 2000)
+
         }
         input.value = ""
     }
