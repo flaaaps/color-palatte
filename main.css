@@ -103,9 +103,9 @@ body {
 }
 .hidden-value {
     display: block;
-    transform: translateX(-100%);
+    transform: translateX(00%);
 /*    width: 1px;*/
-    height: 1px;
+    height: auto;
     z-index: -1;
     outline: none;
 }
