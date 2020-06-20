@@ -18,22 +18,24 @@ input.addEventListener("keyup", function (e) {
             wrapper.innerHTML += `
                          <div style='background: ${color}' class=\"color\">
                               <div class="inner">
-                                 <span class=\"tooltip\">${color}</span>
+                                 <span class=\"tooltip\" onclick="copyColor(this)">${color}</span>
                                  <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
                                  <input class=\"hidden-value\" type=\"text\" value=\"${color}\">
+                                 <span class="copied">Copied</span>
                              </div>
                          </div>`
-        // Add # to the code
-        } else if(/^(?!#)(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/i.test(color)) {
+            // Add # to the code
+        } else if (/^(?!#)(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/i.test(color)) {
             wrapper.innerHTML += `
                          <div style='background: #${color}' class=\"color\">
                               <div class="inner">
-                                 <span class=\"tooltip\" id=\"tooltip4\">#${color}</span>
+                                 <span class=\"tooltip\" id=\"tooltip4\" onclick="copyColor(this)">#${color}</span>
                                  <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
                                  <input class=\"hidden-value\" type=\"text\" value=\"#${color}\">
+                                 <span class="copied">Copied</span>
                              </div>
                          </div>`
-        } else if(color !== "") {
+        } else if (color !== "") {
             // Add not valid item
             wrapper.innerHTML += `<div style="color: white; display: flex; justify-content: center; align-items: center"
                               class=\"color not-valid\" id="not-valid">
@@ -58,4 +60,28 @@ function removeItem(el) {
     setTimeout(function () {
         el.parentNode.parentElement.remove()
     }, 301)
+}
+
+function copyColor(tt) {
+    /* Get the text field */
+    const copyText = tt.nextElementSibling.nextElementSibling;
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    tt.classList.add("active")
+
+    if (tt.classList.contains("preview")) {
+        tt.nextElementSibling.style.background = tt.textContent
+    } else {
+        tt.nextElementSibling.nextElementSibling.nextElementSibling.style.background = tt.textContent
+    }
+    setTimeout(function () {
+        tt.classList.remove("active")
+    }, 1000)
 }
