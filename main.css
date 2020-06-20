@@ -112,80 +112,7 @@ body {
 .tooltip {
     cursor: pointer;
 }
-@keyframes scale-easeInOutElastic {
-    0% {
-        transform: scale(1);
-    }
 
-    4% {
-        transform: scale(1);
-    }
-
-    8% {
-        transform: scale(1);
-    }
-
-    18% {
-        transform: scale(1.01);
-    }
-
-    20% {
-        transform: scale(1);
-    }
-
-    28% {
-        transform: scale(0.98);
-    }
-
-    30% {
-        transform: scale(0.98);
-    }
-
-    38% {
-        transform: scale(1.09);
-    }
-
-    40% {
-        transform: scale(1.12);
-    }
-
-    60% {
-        transform: scale(-0.12);
-    }
-
-    62% {
-        transform: scale(-0.09);
-    }
-
-    70% {
-        transform: scale(0.02);
-    }
-
-    72% {
-        transform: scale(0.02);
-    }
-
-    80% {
-        transform: scale(0);
-    }
-
-    82% {
-        transform: scale(-0.01);
-    }
-
-    90% {
-        transform: scale(0);
-    }
-
-    92% {
-        transform: scale(0);
-    }
-
-    100% {
-        transform: scale(0);
-    }
-
-}
 .copied {
     position: absolute;
     width: 100%;
@@ -204,6 +131,12 @@ body {
 }
 .tooltip.active ~ .copied {
     transform: translateX(0%);
+}
+.not-valid {
+    transition: all .4s ease;
+}
+.not-valid span {
+    width: 100%;
 }
 @media (max-width: 1100px) {
     .wrapper, .pre-wrapper {

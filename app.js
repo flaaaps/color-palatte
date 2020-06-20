@@ -37,16 +37,18 @@ input.addEventListener("keyup", function (e) {
                          </div>`
         } else if (color !== "") {
             // Add not valid item
-            wrapper.innerHTML += `<div style="color: white; display: flex; justify-content: center; align-items: center"
-                              class=\"color not-valid\" id="not-valid">
+            wrapper.innerHTML += `<div style="color: white; width: 150px; height: 150px; background: black; display: flex; justify-content: center; align-items: center"
+                              class=\"not-valid\" id="not-valid">
                              <span style="text-align: center">Not a valid<br> hex code</span>
-                             <input class=\"hidden-value\" type=\"text\" value=\"not valid\">
                          </div>`
             // Remove it after 2 seconds
             setTimeout(function () {
                 let element = document.getElementById("not-valid");
-                element.parentNode.removeChild(element);
-            }, 2000)
+                element.style.opacity = 0;
+                setTimeout(function () {
+                    element.parentNode.removeChild(element);
+                }, 400)
+            }, 1700)
 
         }
         input.value = ""
