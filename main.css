@@ -92,11 +92,12 @@ body {
 }
 .delete-icon {
     bottom: 15px;
-    left: 40px;
+    left: unset;
 }
 .create-icon {
     bottom: 15px;
     right: 40px;
+    display: none;
 }
 
 .color:hover .inner {
@@ -202,8 +203,12 @@ body {
     grid-auto-rows: 200px;
     gap: 0 20px;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1450px) {
+    #value-add {
+        width: 75%;
+    }
     .wrapper, .pre-wrapper {
+        width: 75%;
         grid-template-columns: repeat(3, 1fr);
     }
 }

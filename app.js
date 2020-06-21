@@ -1,11 +1,7 @@
-const str = "The best things in life are free";
-const patt = new RegExp("^free");
-let newStorage = localStorage
 const input = document.getElementById('value-add')
 const wrapper = document.getElementById('wrapper')
 
 input.value = ""
-
 
 // Listening for Enter key
 input.addEventListener("keyup", function (e) {
@@ -56,16 +52,15 @@ input.addEventListener("keyup", function (e) {
         input.value = ""
     }
 })
-
+// const libraryWrapper = document.getElementById("color-wrapper")
 function createItem(el) {
-    const libraryWrapper = document.getElementById("color-wrapper")
     const elementStyles = window.getComputedStyle(el.parentElement.parentElement)
     const color = elementStyles.backgroundColor;
     /*console.log(elementStyles.backgroundColor)
     console.log(elementStyles.backgroundColor[4])*/
     // document.write(rgbToHex(match[1], match[2], match[3]));
 
-    libraryWrapper.innerHTML += `
+    wrapper.innerHTML += `
                          <div style='background: ${rgb2hex(color)}' class=\"color\">
                               <div class="inner">
                                  <span class=\"tooltip\" onclick="copyColor(this)">${rgb2hex(color)}</span>
@@ -93,13 +88,21 @@ function removeItem(el) {
     }, 301)
 }
 
-const colorLibrary = document.getElementById("open-library")
+/*const colorLibrary = document.getElementById("open-library")
 colorLibrary.addEventListener("click", openColorLibrary)
 
+let isOpen;
 function openColorLibrary() {
     const library = document.getElementById("library")
     library.classList.toggle("l-active")
+    isOpen = library.classList.contains("l-active");
+    localStorage.setItem("libraryopen", isOpen)
 }
+
+if (localStorage.getItem("libraryopen") === "true") {
+    const library = document.getElementById("library")
+    library.classList.add("l-active")
+}*/
 
 function copyColor(tt) {
     /* Get the text field */
