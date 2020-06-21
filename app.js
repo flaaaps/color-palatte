@@ -70,7 +70,7 @@ function copyColor(tt) {
 
     /* Select the text field */
     copyText.select();
-    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+    copyText.setSelectionRange(0, copyText.value.length); /*For mobile devices*/
 
     /* Copy the text inside the text field */
     document.execCommand("copy");
