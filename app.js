@@ -1,7 +1,8 @@
 const str = "The best things in life are free";
 const patt = new RegExp("^free");
-const res = patt.exec(str);
+let newStorage = localStorage
 const input = document.getElementById('value-add')
+const wrapper = document.getElementById('wrapper')
 
 input.value = ""
 
@@ -10,7 +11,6 @@ input.value = ""
 input.addEventListener("keyup", function (e) {
     if (e.keyCode === 13) {
         const color = input.value
-        const wrapper = document.getElementById('wrapper')
 
         //Check if input is correctly formatted
         if (/^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/i.test(color)) {
@@ -19,7 +19,8 @@ input.addEventListener("keyup", function (e) {
                          <div style='background: ${color}' class=\"color\">
                               <div class="inner">
                                  <span class=\"tooltip\" onclick="copyColor(this)">${color}</span>
-                                 <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
+                                 <ion-icon name="trash-outline" class="delete-icon" onclick="removeItem(this)"></ion-icon>
+                                 <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                                  <input class=\"hidden-value\" type=\"text\" value=\"${color}\">
                                  <span class="copied">Copied</span>
                              </div>
@@ -30,7 +31,8 @@ input.addEventListener("keyup", function (e) {
                          <div style='background: #${color}' class=\"color\">
                               <div class="inner">
                                  <span class=\"tooltip\" id=\"tooltip4\" onclick="copyColor(this)">#${color}</span>
-                                 <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
+                                 <ion-icon name="trash-outline" class="delete-icon" onclick="removeItem(this)"></ion-icon>
+                                 <ion-icon name="add-circle-outline" class="create-icon" onclick="createItem(this)"></ion-icon>
                                  <input class=\"hidden-value\" type=\"text\" value=\"#${color}\">
                                  <span class="copied">Copied</span>
                              </div>
@@ -55,6 +57,33 @@ input.addEventListener("keyup", function (e) {
     }
 })
 
+function createItem(el) {
+    const libraryWrapper = document.getElementById("color-wrapper")
+    const elementStyles = window.getComputedStyle(el.parentElement.parentElement)
+    const color = elementStyles.backgroundColor;
+    /*console.log(elementStyles.backgroundColor)
+    console.log(elementStyles.backgroundColor[4])*/
+    // document.write(rgbToHex(match[1], match[2], match[3]));
+
+    libraryWrapper.innerHTML += `
+                         <div style='background: ${rgb2hex(color)}' class=\"color\">
+                              <div class="inner">
+                                 <span class=\"tooltip\" onclick="copyColor(this)">${rgb2hex(color)}</span>
+                                 <ion-icon name="trash-outline" onclick="removeItem(this)"></ion-icon>
+                                 <input class=\"hidden-value\" type=\"text\" value=\"${rgb2hex(color)}\">
+                                 <span class="copied">Copied</span>
+                             </div>
+                         </div>`
+}
+
+function rgb2hex(rgb) {
+    rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+    return (rgb && rgb.length === 4) ? "#" +
+        ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
+}
+
 // Remove a item from the grid
 function removeItem(el) {
     el.parentNode.parentElement.style.transform = "translateY(50px)"
@@ -64,18 +93,22 @@ function removeItem(el) {
     }, 301)
 }
 
+const colorLibrary = document.getElementById("open-library")
+colorLibrary.addEventListener("click", openColorLibrary)
+
+function openColorLibrary() {
+    const library = document.getElementById("library")
+    library.classList.toggle("l-active")
+}
+
 function copyColor(tt) {
     /* Get the text field */
     const copyText = tt.nextElementSibling.nextElementSibling;
-    let editable = copyText.contentEditable
-    let readonly = copyText.readOnly
 
     /* Select the text field */
     copyText.select();
     copyText.setSelectionRange(0, copyText.value.length); /*For mobile devices*/
 
-    copyText.contentEditable = editable;
-    copyText.readOnly = readonly;
     /* Copy the text inside the text field */
     document.execCommand("copy");
 

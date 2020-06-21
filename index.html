@@ -9,6 +9,8 @@
       <meta name="description" content="Add and remove your own colors!">
       <title>Color palettes</title>
       <link rel="stylesheet" href="main.css">
+      <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
    </head>
    <style>
    </style>
@@ -18,6 +20,7 @@
       <div class="pre-wrapper" id="pre-wrapper">
          <div style='background: #e74c3c' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#e74c3c</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#e74c3c">
@@ -25,6 +28,7 @@
          </div>
          <div style='background: #3498db' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#3498db</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#3498db">
@@ -32,6 +36,7 @@
          </div>
          <div style='background: #2ecc71' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#2ecc71</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#2ecc71">
@@ -39,6 +44,7 @@
          </div>
          <div style='background: #f1c40f' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#f1c40f</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#f1c40f">
@@ -46,6 +52,7 @@
          </div>
          <div style='background: #9c88ff' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#9c88ff</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#9c88ff">
@@ -53,6 +60,7 @@
          </div>
          <div style='background: #778ca3' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#778ca3</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#778ca3">
@@ -60,6 +68,7 @@
          </div>
          <div style='background: #6a89cc' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#6a89cc</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#6a89cc">
@@ -67,6 +76,7 @@
          </div>
          <div style='background: #4b4b4b' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#4b4b4b</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#4b4b4b">
@@ -74,6 +84,7 @@
          </div>
          <div style='background: #ffcccc' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#ffcccc</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#ffcccc">
@@ -81,6 +92,7 @@
          </div>
          <div style='background: #33d9b2' class="color">
             <div class="inner">
+               <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                <span class="tooltip preview" onclick="copyColor(this)">#33d9b2</span>
                <span class="copied">Copied</span>
                <input class="hidden-value" type="text" value="#33d9b2">
@@ -89,8 +101,14 @@
       </div>
       <div class="separation-line"></div>
       <div id="wrapper" class="wrapper"></div>
+      <div id="library" class="library">
+         <h2>Saved Colors:</h2>
+         <div id="color-wrapper"></div>
+      </div>
+      <div class="footer">
+         <h2 id="open-library" onclick="f()">Library</h2>
+      </div>
       <script src="app.js"></script>
-      <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
    </body>
 
 </html>
