@@ -67,11 +67,15 @@ function removeItem(el) {
 function copyColor(tt) {
     /* Get the text field */
     const copyText = tt.nextElementSibling.nextElementSibling;
+    let editable = copyText.contentEditable
+    let readonly = copyText.readOnly
 
     /* Select the text field */
     copyText.select();
     copyText.setSelectionRange(0, copyText.value.length); /*For mobile devices*/
 
+    copyText.contentEditable = editable;
+    copyText.readOnly = readonly;
     /* Copy the text inside the text field */
     document.execCommand("copy");
 
