@@ -16,7 +16,6 @@ input.addEventListener("keyup", function (e) {
                               <div class="inner">
                                  <span class=\"tooltip\" onclick="copyColor(this)">${color}</span>
                                  <ion-icon name="trash-outline" class="delete-icon" onclick="removeItem(this)"></ion-icon>
-                                 <ion-icon name="add-circle-outline" onclick="createItem(this)"></ion-icon>
                                  <input class=\"hidden-value\" type=\"text\" value=\"${color}\">
                                  <span class="copied">Copied</span>
                              </div>
@@ -28,7 +27,6 @@ input.addEventListener("keyup", function (e) {
                               <div class="inner">
                                  <span class=\"tooltip\" id=\"tooltip4\" onclick="copyColor(this)">#${color}</span>
                                  <ion-icon name="trash-outline" class="delete-icon" onclick="removeItem(this)"></ion-icon>
-                                 <ion-icon name="add-circle-outline" class="create-icon" onclick="createItem(this)"></ion-icon>
                                  <input class=\"hidden-value\" type=\"text\" value=\"#${color}\">
                                  <span class="copied">Copied</span>
                              </div>
@@ -59,7 +57,6 @@ function createItem(el) {
     /*console.log(elementStyles.backgroundColor)
     console.log(elementStyles.backgroundColor[4])*/
     // document.write(rgbToHex(match[1], match[2], match[3]));
-
     wrapper.innerHTML += `
                          <div style='background: ${rgb2hex(color)}' class=\"color\">
                               <div class="inner">
